@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Resume-Job Matching</h1>
+<form method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmission();">
+    <label>Enter Job Description:</label><br>
+    <textarea name="job_description" rows="4" required></textarea><br>
+    <label>Upload Resumes (PDF, DOCX, TXT):</label>
+    <input type="file" name="resumes" multiple required><br>
+    <button type="submit">Match Resumes</button>
+</form>
+
+{% if top_resumes %}
+<div class="results">
+    <h2>Top Matching Resumes:</h2>
+    <ul>
+        {% for resume, score in zip(top_resumes, similarity_scores) %}
+        <li>{{ resume }} - Similarity Score: {{ score }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}

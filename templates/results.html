@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+{% if mode == 'categorization' %}
+    <h2>Predicted Job Category</h2>
+    <p>The resume belongs to the category: <strong>{{ category }}</strong></p>
+{% elif mode == 'matching' %}
+    <h2>Top Matching Resumes</h2>
+    <ul>
+        {% for resume, score in matches %}
+        <li>{{ resume }} - Similarity Score: {{ score }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<a href="/">Go Back to Home</a>
+{% endblock %}

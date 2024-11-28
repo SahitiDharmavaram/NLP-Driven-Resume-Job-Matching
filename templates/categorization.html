@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Resume Categorization</h1>
+<form method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmission();">
+    <label>Upload your Resume (PDF, DOCX, TXT):</label>
+    <input type="file" name="resume" required>
+    <button type="submit">Predict Category</button>
+</form>
+{% if category %}
+<div class="results">
+    <h2>Predicted Job Category</h2>
+    <p>The resume belongs to the category: <strong>{{ category }}</strong></p>
+</div>
+{% endif %}
+{% endblock %}
